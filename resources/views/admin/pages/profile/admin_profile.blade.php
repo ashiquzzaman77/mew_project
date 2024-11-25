@@ -48,7 +48,7 @@
                                         <h4>{{ $profileData->name }}</h4>
                                         <p class="text-secondary mb-1">{{ $profileData->email }}</p>
                                         <p class="text-muted font-size-sm">{{ $profileData->address }}</p>
-                                        
+
                                     </div>
                                 </div>
                                 <hr class="my-4">
@@ -109,9 +109,8 @@
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                         <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                height="24" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"
+                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                 class="feather feather-facebook me-2 icon-inline text-primary">
                                                 <path
                                                     d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
@@ -147,7 +146,7 @@
                                             <h6 class="mb-0">Email</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="text" class="form-control" name="email" readonly
+                                            <input type="email" class="form-control" name="email"
                                                 value="{{ $profileData->email }}">
                                         </div>
                                     </div>
@@ -194,12 +193,11 @@
                                     <div class="row">
                                         <div class="col-sm-3"></div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="submit" class="btn btn-primary px-4"
-                                                value="Update Profile">
+                                            <button type="submit"
+                                                class="btn btn-outline-primary px-3 rounded-0">Update Profile</button>
                                         </div>
                                     </div>
                                 </form>
-
 
                             </div>
                         </div>
