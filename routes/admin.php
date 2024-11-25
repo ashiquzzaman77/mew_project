@@ -33,7 +33,7 @@ Route::middleware('guest:admin')->group(function () {
         ->name('admin.password.store');
 });
 
-Route::middleware(['auth:admin', 'verified'])->group(function () {
+Route::middleware(['auth:admin'])->group(function () {
 
     //Admin Profile
     Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');

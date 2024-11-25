@@ -101,6 +101,7 @@ class AdminController extends Controller
         if (!Hash::check($request->old_password, Auth::guard('admin')->user()->password)) {
 
             // toastr()->error('Old Password Not Match!');
+            flash()->success('Old Password Not Match!');
 
             return redirect()->back();
         }
@@ -111,6 +112,7 @@ class AdminController extends Controller
         ]);
 
         // toastr()->success('');
+        // flash()->success('Password Change SUccessfully!!');
 
         return redirect()->back()->with('success', 'Password Change Succeesfully');
     }
