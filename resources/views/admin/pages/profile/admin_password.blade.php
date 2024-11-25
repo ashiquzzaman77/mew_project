@@ -128,9 +128,10 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <form action="{{ route('admin.password.update') }}" method="POST"
+                                <form action="{{ route('admin.password.update.submit') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
+                                    
 
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
