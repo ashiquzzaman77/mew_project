@@ -44,6 +44,8 @@ Route::middleware(['auth:admin'])->group(function () {
 
 
 
+
+
 Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('verify-email', EmailVerificationPromptController::class)
