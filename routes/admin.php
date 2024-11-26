@@ -9,9 +9,7 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
-
 use Illuminate\Support\Facades\Route;
-
 
 Route::middleware('guest:admin')->group(function () {
 
@@ -46,6 +44,8 @@ Route::middleware(['auth:admin'])->group(function () {
 
 
 
+
+
 Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('verify-email', EmailVerificationPromptController::class)
@@ -72,5 +72,5 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
         ->name('logout');
 
     //Admin DashBoard
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['verified'])->name('dashboard');
+    Route::get('/dashboard', [AdminController::class, 'AdminDashboard'])->middleware(['verified'])->name('dashboard');
 });

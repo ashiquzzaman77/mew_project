@@ -5,32 +5,32 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
-    public function dashboard()
+    public function AdminDashboard()
     {
         return view('admin/dashboard');
     }
 
-    public function destroy(Request $request)
-    {
+    // public function destroy(Request $request)
+    // {
 
-        // Get the authenticated admin user
-        $user = $request->user();
+    //     // Get the authenticated admin user
+    //     $user = $request->user();
 
-        Auth::guard('admin')->logout();
+    //     Auth::guard('admin')->logout();
 
-        $user->delete();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        // return Redirect::to('/');
-        // return redirect('/');
-    }
+    //     $user->delete();
+    //     $request->session()->invalidate();
+    //     $request->session()->regenerateToken();
+    //     // return Redirect::to('/');
+    //     // return redirect('/');
+    // }
 
     //AdminProfile
     public function AdminProfile()
@@ -46,31 +46,53 @@ class AdminController extends Controller
     //AdminProfileUpdate
     public function AdminProfileUpdate(Request $request)
     {
+        // Log the current admin session and request data for debugging
+        Log::info('Admin Profile Update Request', [
+            'admin_id' => Auth::guard('admin')->user()->id,
+            'name' => $request->name,
+            'company_name' => $request->company_name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+        ]);
 
-        $id = Auth::guard('admin')->user()->id;
-        $update = Admin::findOrFail($id);
-
-        $update->name = $request->name;
-        $update->company_name = $request->company_name;
-        $update->email = $request->email;
-        $update->phone = $request->phone;
-        $update->address = $request->address;
-        // $update->designation = $request->designation;
-
-        if ($request->file('photo')) {
-            $file = $request->file('photo');
-            @unlink(public_path('upload/admin_images/' . $update->photo));
-            $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path('upload/admin_images/'), $filename);
-            $update['photo'] = $filename;
+        if (!Auth::guard('admin')->check()) {
+            Log::error('Admin not logged in.');
+            return redirect()->route('admin.login')->with('error', 'You are not logged in');
         }
 
-        $update->save();
+        try {
+            $id = Auth::guard('admin')->user()->id;
+            $update = Admin::findOrFail($id);
 
-        return redirect()->back()->with('success', 'Profile Update Succeesfully');
+            // Update the admin profile data
+            $update->name = $request->name;
+            $update->company_name = $request->company_name;
+            $update->email = $request->email;
+            $update->phone = $request->phone;
+            $update->address = $request->address;
+
+            // Handle file upload if a new photo is provided
+            if ($request->file('photo')) {
+                $file = $request->file('photo');
+                @unlink(public_path('upload/admin_images/' . $update->photo));
+                $filename = date('YmdHi') . $file->getClientOriginalName();
+                $file->move(public_path('upload/admin_images/'), $filename);
+                $update['photo'] = $filename;
+            }
+
+            $update->save();
+            Log::info('Admin Profile Updated Successfully', ['admin_id' => $update->id]);
+
+            return redirect()->back()->with('success', 'Profile Updated Successfully');
+        } catch (\Exception $e) {
+            Log::error('Error during profile update', [
+                'error_message' => $e->getMessage(),
+                'stack_trace' => $e->getTraceAsString(),
+            ]);
+            return redirect()->back()->with('error', 'Something went wrong. Please try again later.');
+        }
     }
-
-
 
     //Admin Password
     public function AdminPasswordPage()
