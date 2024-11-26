@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\AdminAuth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -25,17 +25,17 @@ class ConfirmablePasswordController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        if (!Auth::guard('admin')->validate([
+        if (! Auth::guard('admin')->validate([
             'email' => $request->user()->email,
             'password' => $request->password,
         ])) {
             throw ValidationException::withMessages([
-                'password' => __('admin.password'),
+                'password' => __('auth.password'),
             ]);
         }
 
-        $request->session()->put('admin.password_confirmed_at', time());
+        $request->session()->put('auth.password_confirmed_at', time());
 
-        return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 }

@@ -20,15 +20,13 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
+
+            if ($guard == "admin" && Auth::guard($guard)->check()) {
+                return redirect(RouteServiceProvider::ADMIN_DASHBOARD);
+            }
+
             if (Auth::guard($guard)->check()) {
-                switch ($guard) {
-                    case 'admin':
-                        return redirect(RouteServiceProvider::ADMIN_HOME);
-                        break;
-                    default:
-                        return redirect(RouteServiceProvider::HOME);
-                        break;
-                }
+                return redirect(RouteServiceProvider::HOME);
             }
         }
 

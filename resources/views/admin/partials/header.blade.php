@@ -621,7 +621,7 @@
                     <li><a class="dropdown-item d-flex align-items-center" href="{{ route('admin.profile') }}"><i
                                 class="bx bx-user fs-5"></i><span>Profile</span></a>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('admin.password') }}"><i
+                    <li><a class="dropdown-item d-flex align-items-center" href=""><i
                                 class="bx bx-key fs-5"></i><span>Password</span></a>
                     </li>
                     <li>
@@ -629,14 +629,11 @@
                     </li>
 
                     <li>
-                        <form method="POST" action="{{ route('admin.logout') }}">
-                            @csrf
-                            <a class="dropdown-item d-flex align-items-center"
-                                onclick="event.preventDefault();
-                                this.closest('form').submit();"
-                                href="{{ route('admin.logout') }}"><i
-                                    class="bx bx-log-out-circle"></i><span>Logout</span></a>
-                            <form>
+
+                        <a class="dropdown-item d-flex align-items-center">
+                            <i class="bx bx-log-out-circle"></i><span>Logout</span>
+                        </a>
+
 
                     </li>
 

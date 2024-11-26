@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\AdminAuth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
 class PasswordController extends Controller
@@ -26,20 +25,5 @@ class PasswordController extends Controller
         ]);
 
         return back()->with('status', 'password-updated');
-    }
-
-    public function checkPassword(Request $request)
-    {
-        $admin = Auth::guard('admin')->user();
-
-        if (!$admin) {
-            return response()->json(['success' => false, 'message' => 'Account not found']);
-        }
-
-        if (password_verify($request->password, $admin->password)) {
-            return response()->json(['success' => true]);
-        } else {
-            return response()->json(['success' => false, 'message' => 'Incorrect password']);
-        }
     }
 }

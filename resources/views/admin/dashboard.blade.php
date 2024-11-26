@@ -1,5 +1,4 @@
 <x-admin-app-layout>
-
     <div class="page-content">
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
@@ -44,8 +43,7 @@
                                 <h4 class="my-1 text-success">34.6%</h4>
                                 <p class="mb-0 font-13">-4.5% from last week</p>
                             </div>
-                            <div
-                                class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto">
+                            <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto">
                                 <i class='bx bxs-bar-chart-alt-2'></i>
                             </div>
                         </div>
@@ -108,13 +106,13 @@
                             <canvas id="chart1"></canvas>
                         </div>
                     </div>
-                    <div
-                        class="row row-cols-1 row-cols-md-3 row-cols-xl-3 g-0 row-group text-center border-top">
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-xl-3 g-0 row-group text-center border-top">
                         <div class="col">
                             <div class="p-3">
                                 <h5 class="mb-0">24.15M</h5>
                                 <small class="mb-0">Overall Visitor <span> <i
-                                            class="bx bx-up-arrow-alt align-middle"></i> 2.43%</span></small>
+                                            class="bx bx-up-arrow-alt align-middle"></i>
+                                        2.43%</span></small>
                             </div>
                         </div>
                         <div class="col">
@@ -127,8 +125,8 @@
                         <div class="col">
                             <div class="p-3">
                                 <h5 class="mb-0">639.82</h5>
-                                <small class="mb-0">Pages/Visit <span> <i
-                                            class="bx bx-up-arrow-alt align-middle"></i> 5.62%</span></small>
+                                <small class="mb-0">Pages/Visit <span> <i class="bx bx-up-arrow-alt align-middle"></i>
+                                        5.62%</span></small>
                             </div>
                         </div>
                     </div>
@@ -170,23 +168,19 @@
                             class="list-group-item d-flex bg-transparent justify-content-between align-items-center border-top">
                             Jeans <span class="badge bg-success rounded-pill">25</span>
                         </li>
-                        <li
-                            class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
+                        <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
                             T-Shirts <span class="badge bg-danger rounded-pill">10</span>
                         </li>
-                        <li
-                            class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
+                        <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
                             Shoes <span class="badge bg-primary rounded-pill">65</span>
                         </li>
-                        <li
-                            class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
+                        <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
                             Lingerie <span class="badge bg-warning text-dark rounded-pill">14</span>
                         </li>
                     </ul>
                 </div>
             </div>
         </div><!--end row-->
-
 
     </div>
 </x-admin-app-layout>

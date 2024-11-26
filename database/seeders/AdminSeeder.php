@@ -2,20 +2,23 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class AdminSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
     {
-        // Insert an example admin record
-        Admin::create([
+        DB::table('admins')->insert([
             'name' => 'Md Ashiquzzaman',
-            'email' => 'ashiquzzaman.rajib.cse@gmail.com',
-            'password' => Hash::make('password'), // Use Hash to securely store passwords
+            'email' => 'admin@gmail.com',
+            'phone' => '01728499226',
+            'password' => Hash::make('password'),
         ]);
     }
 }
