@@ -621,7 +621,7 @@
                     <li><a class="dropdown-item d-flex align-items-center" href="{{ route('admin.profile') }}"><i
                                 class="bx bx-user fs-5"></i><span>Profile</span></a>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('admin.password.page') }}"><i
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('admin.password') }}"><i
                                 class="bx bx-key fs-5"></i><span>Password</span></a>
                     </li>
                     <li>

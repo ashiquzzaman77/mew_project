@@ -40,7 +40,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/admin/profile/update', [AdminController::class, 'AdminProfileUpdate'])->name('admin.profile.update');
 
     //Admin Password
-    Route::get('/admin-password', [AdminController::class, 'AdminPasswordPage'])->name('admin.password.page');
+    Route::get('/admin-password', [AdminController::class, 'AdminPasswordPage'])->name('admin.password');
     Route::post('/admin/password/update/submit', [AdminController::class, 'AdminPasswordUpdateSubmit'])->name('admin.password.update.submit');
 });
 
