@@ -629,13 +629,16 @@
                     </li>
 
                     <li>
-
-                        <a class="dropdown-item d-flex align-items-center">
+                        <form action="{{ route('admin.logout') }}" method="POST" id="logout-form"
+                            style="display: none;">
+                            @csrf
+                        </form>
+                        <a href="javascript:void(0);" onclick="document.getElementById('logout-form').submit();"
+                            class="dropdown-item d-flex align-items-center">
                             <i class="bx bx-log-out-circle"></i><span>Logout</span>
                         </a>
-
-
                     </li>
+
 
                 </ul>
             </div>
