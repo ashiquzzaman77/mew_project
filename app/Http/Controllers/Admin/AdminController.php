@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class AdminController extends Controller
 {
@@ -53,48 +55,40 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Profile Update Succeesfully');
     }
 
+    //Admin Password
+    public function AdminPasswordPage()
+    {
+        $id = Auth::guard('admin')->user()->id;
+        $profileData = Admin::find($id);
 
-
-    // //Admin Password
-    // public function AdminPasswordPage()
-    // {
-    //     $id = Auth::guard('admin')->user()->id;
-    //     $profileData = Admin::find($id);
-
-    //     return view('admin.pages.profile.admin_password', compact('profileData'));
-    // }
+        return view('admin.pages.profile.admin_password', compact('profileData'));
+    }
 
     //Admin Password Update
-    // public function AdminPasswordUpdateSubmit(Request $request)
-    // {
-    //     //validate
-    //     $request->validate([
+    public function AdminPasswordUpdateSubmit(Request $request)
+    {
+        // Validate the incoming data
+        $request->validate([
 
-    //         'old_password' => 'required',
-    //         'new_password' => [
+            'old_password' => 'required', // Old password is required
+            'new_password' => [
+                'required',
+                'confirmed', // Ensure password confirmation is correct
+                Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers(), // Password rules
+            ],
+        ]);
 
-    //             'required',
-    //             'confirmed',
-    //             Rules\Password::min(8)->mixedCase()->symbols()->letters()->numbers(),
+        // Match Old Password
+        if (!Hash::check($request->old_password, Auth::guard('admin')->user()->password)) {
+            return redirect()->back()->with('error', 'Old Password Does Not Match!');
+        }
 
-    //         ],
-    //     ]);
+        // Update New Password
+        Admin::whereId(Auth::guard('admin')->user()->id)->update([
+            'password' => Hash::make($request->new_password),
+        ]);
 
-    //     //Match Old Password
-    //     if (!Hash::check($request->old_password, Auth::guard('admin')->user()->password)) {
+        return redirect()->back()->with('success', 'Password Successfully Updated');
+    }
 
-    //         toastr()->error('Old Password Not Match!');
-
-    //         return redirect()->back();
-    //     }
-
-    //     //Update New Password
-    //     Admin::whereId(Auth::guard('admin')->user()->id)->update([
-    //         'password' => Hash::make($request->new_password),
-    //     ]);
-
-    //     toastr()->success('');
-
-    //     return redirect()->back()->with('success', 'Password Change Succeesfully');
-    // }
 }

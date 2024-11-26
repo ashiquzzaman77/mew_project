@@ -1,152 +1,172 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
-    <meta name="author" content="NobleUI">
-    <meta name="keywords"
-        content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--favicon-->
+    <link rel="icon" href="{{ asset('admin/assets/images/favicon-32x32.png') }}" type="image/png" />
+
+    <!--plugins-->
+    <link href="{{ asset('admin/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
+
+    <!-- loader-->
+    {{-- <link href="assets/css/pace.min.css" rel="stylesheet" />
+    <script src="assets/js/pace.min.js"></script> --}}
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/assets/css/bootstrap-extended.css') }}" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+
+    <link href="{{ asset('admin/assets/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/assets/css/icons.css') }}" rel="stylesheet">
 
     <title>Admin | Login</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <!-- End fonts -->
-
-    <!-- core:css -->
-    <link rel="stylesheet" href="{{ asset('backend/login/assets/vendors/core/core.css') }}">
-    <!-- endinject -->
-
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-
-    <!-- inject:css -->
-    <link rel="stylesheet" href="{{ asset('backend/login/assets/fonts/feather-font/css/iconfont.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/login/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
-    <!-- endinject -->
-
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="{{ asset('backend/login/assets/css/demo2/style.css') }}">
-    <!-- End layout styles -->
-
-    <link rel="shortcut icon" href="{{ asset('backend/login/assets/logo/Favicon_Dadabhaai.png') }}" />
 </head>
 
-<body>
-    <div class="main-wrapper">
-        <div class="page-wrapper full-page">
-            <div class="page-content d-flex align-items-center justify-content-center">
+<body class="bg-dark" style="background: linear-gradient(to bottom, #1b2d3a, #000c0e);">
 
-                <div class="row w-100 mx-0 auth-page">
-                    <div class="col-md-8 col-xl-6 mx-auto">
-                        <div class="card">
-                            <div class="row">
+    <!--wrapper-->
+    <div class="wrapper">
+        <div class="section-authentication-signin d-flex align-items-center justify-content-center my-lg-0"
+            style="margin-top: 40%">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 mx-auto">
+                        <div class="card mb-0 shadow-none rounded-0">
+                            <div class="card-body">
+                                <div class="p-4">
+                                    <div class="row">
 
-                                <div class="col-md-4 pe-md-0">
-                                    <div class="">
-                                        <img alt="Logo"
-                                            src="{{ asset('backend/login/assets/logo/5500661.jpg') }}" class=""
-                                            style="width: 100%; height:480px;" />
-                                    </div>
-                                </div>
+                                        <div class="col-lg-5 d-none d-lg-block">
+                                            <img src="https://azshipping.net/backend/login/assets/logo/ship2.jpg" style="width:100%;height:500px"
+                                                alt="" />
+                                        </div>
 
-                                <div class="col-md-8 ps-md-0">
-                                    <div class="auth-form-wrapper px-4 py-5">
 
-                                        <a href=""
-                                            class="noble-ui-logo logo-light d-block text-center mb-4">
-
-                                            <img alt="Logo"
-                                                src="{{ asset('backend/login/assets/logo/Dadabhaai Logo (White Variant).png') }}"
-                                                class="" style="width: 40%" />
-
-                                        </a>
-
-                                        <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
-
-                                        <form class="forms-sample" action="{{ route('admin.login') }}" method="POST">
-
-                                            @csrf
+                                        <div class="col-lg-6 col-12 mx-auto my-auto">
 
                                             <div class="mb-3">
-                                                <label for="login" class="form-label">Email Address</label>
-                                                <input type="text" autocomplete="off"
-                                                    class="form-control @error('login') is-invalid @enderror"
-                                                    name="login" id="login" placeholder="">
-
-                                                @error('login')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
+                                                <img src="assets/images/logo-icon.png" width="60" alt="" />
+                                            </div>
+                                            <div class="mb-4">
+                                                <h5 class="">Rocker Admin</h5>
+                                                <p class="mb-0">Please log in to your account</p>
                                             </div>
 
-                                            <div class="mb-3">
-                                                <label for="password" class="form-label">Password</label>
-                                                <input type="password" autocomplete="off" name="password"
-                                                    class="form-control @error('password') is-invalid @enderror"
-                                                    id="password" autocomplete="current-password" placeholder="">
+                                            <div class="form-body">
 
-                                                @error('password')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
+                                                <form class="row g-3" action="{{ route('admin.login') }}"
+                                                    method="POST">
+                                                    @csrf
 
+                                                    <div class="col-12">
+                                                        <label for="inputEmailAddress" class="form-label">Email Or
+                                                            Phone</label>
+                                                        <input type="text"
+                                                            class="form-control @error('login') is-invalid @enderror"
+                                                            name="login" id="inputEmailAddress"
+                                                            placeholder="Email Or Phone">
+
+                                                        @error('login')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <label for="inputChoosePassword"
+                                                            class="form-label">Password</label>
+                                                        <div class="input-group" id="show_hide_password">
+                                                            <input type="password" class="form-control border-end-0"
+                                                                id="inputChoosePassword" name="password" value=""
+                                                                placeholder="Enter Password"> <a href="javascript:;"
+                                                                class="input-group-text bg-transparent @error('password') is-invalid @enderror"><i
+                                                                    class='bx bx-hide'></i></a>
+                                                        </div>
+                                                        @error('password')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-check form-switch">
+
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="remember_me" name="remember">
+
+                                                            <label class="form-check-label"
+                                                                for="flexSwitchCheckChecked">Remember Me</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 text-end"> <a
+                                                            href="authentication-forgot-password.html">Forgot Password
+                                                            ?</a>
+                                                    </div>
+                                                    <div class="col-3">
+
+                                                        <div class="d-grid">
+                                                            <button type="submit" class="btn btn-primary rounded-0">Sign
+                                                                in</button>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
                                             </div>
+                                        </div>
 
-                                            <div class="form-check mb-3">
-                                                <input type="checkbox" class="form-check-input" id="remember_me"
-                                                    name="remember">
 
-                                                <label class="form-check-label" for="authCheck">
-                                                    Remember me
-                                                </label>
-
-                                            </div>
-
-                                            <div>
-                                                <button type="submit"
-                                                    class="btn btn-primary me-2 px-3 mb-2 mb-md-0 text-white">Login
-                                                </button>
-                                            </div>
-
-                                            <a href="{{ route('admin.password.request') }}"
-                                                class="d-block mt-3 text-muted">Forgot Password?
-                                                Click Here</a>
-
-                                        </form>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                <!--end row-->
             </div>
         </div>
     </div>
+    <!--end wrapper-->
 
-    <!-- core:js -->
-    <script src="{{ asset('backend/login/assets/vendors/core/core.js') }}"></script>
-    <!-- endinject -->
+    <!-- Bootstrap JS -->
+    <script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Plugin js for this page -->
-    <!-- End plugin js for this page -->
+    <!--plugins-->
+    <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
 
-    <!-- inject:js -->
-    <script src="{{ asset('backend/login/assets/vendors/feather-icons/feather.min.js') }}"></script>
-    <script src="{{ asset('backend/login/assets/js/template.js') }}"></script>
-    <!-- endinject -->
-
-
+    <!--Password show & hide js -->
+    <script>
+        $(document).ready(function() {
+            $("#show_hide_password a").on('click', function(event) {
+                event.preventDefault();
+                if ($('#show_hide_password input').attr("type") == "text") {
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password i').addClass("bx-hide");
+                    $('#show_hide_password i').removeClass("bx-show");
+                } else if ($('#show_hide_password input').attr("type") == "password") {
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password i').removeClass("bx-hide");
+                    $('#show_hide_password i').addClass("bx-show");
+                }
+            });
+        });
+    </script>
+    <!--app JS-->
+    <script src="{{ asset('admin/assets/js/app.js') }}"></script>
 </body>
 
-</html>
 
+</html>
 
 
 {{-- <!DOCTYPE html>

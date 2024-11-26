@@ -98,83 +98,57 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <form action="{{ route('admin.profile.update') }}" method="POST"
-                                    enctype="multipart/form-data">
-
+                                <form action="{{ route('admin.password.update.submit') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-
+                                
+                                    <!-- Old Password -->
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Name</h6>
+                                            <h6 class="mb-0">Old Password</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="text" class="form-control" name="name"
-                                                value="{{ $profileData->name }}">
+                                            <input type="password" class="form-control" name="old_password">
+                                            @error('old_password')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
-
+                                
+                                    <!-- New Password -->
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Email</h6>
+                                            <h6 class="mb-0">New Password</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="email" class="form-control" disabled readonly name="email"
-                                                value="{{ $profileData->email }}">
+                                            <input type="password" class="form-control" name="new_password">
+                                            @error('new_password')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
-
+                                
+                                    <!-- Confirm New Password -->
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">Phone</h6>
+                                            <h6 class="mb-0">Confirm Password</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="text" class="form-control" name="phone"
-                                                value="{{ $profileData->phone }}">
+                                            <input type="password" class="form-control" name="new_password_confirmation">
+                                            @error('new_password_confirmation')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
-
-                                    <div class="row mb-3">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Company Name</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <input type="text" class="form-control" name="company_name"
-                                                value="{{ $profileData->company_name }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Address</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <input type="text" class="form-control" name="address"
-                                                value="{{ $profileData->address }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Profile Photo</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <input type="file" class="form-control" name="photo" id="photo-input">
-                                            <br>
-                                            <img id="profile-photo" src="" alt="Profile Photo"
-                                                style="max-width: 130px; max-height: 130px; display: none;" />
-                                        </div>
-                                    </div>
-
-
+                                
+                                    <!-- Submit Button -->
                                     <div class="row">
                                         <div class="col-sm-3"></div>
                                         <div class="col-sm-9 text-secondary">
-                                            <button type="submit"
-                                                class="btn btn-outline-primary px-3 rounded-0">Update
-                                                Profile</button>
+                                            <button type="submit" class="btn btn-outline-primary px-3 rounded-0">Update Password</button>
                                         </div>
                                     </div>
                                 </form>
+                                
 
                             </div>
                         </div>
@@ -187,19 +161,6 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById('photo-input').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.getElementById('profile-photo');
-                    img.src = e.target.result; // Set the image source to the result from FileReader
-                    img.style.display = 'block'; // Display the image
-                };
-                reader.readAsDataURL(file); // Read the file as a data URL (Base64 encoded)
-            }
-        });
-    </script>
+
 
 </x-admin-app-layout>
