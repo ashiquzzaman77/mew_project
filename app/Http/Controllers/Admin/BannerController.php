@@ -85,7 +85,8 @@ class BannerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Banner::findOrFail($id);
+        return view('admin.pages.banner.edit', compact('item'));
     }
 
     /**

@@ -11,7 +11,7 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Create Banner</li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Banner</li>
                     </ol>
                 </nav>
             </div>
@@ -24,62 +24,76 @@
         </div>
         <!--end breadcrumb-->
 
-        <h6 class="mb-0 text-uppercase">Create Banner In Site</h6>
+        <h6 class="mb-0 text-uppercase">Edit Banner In Site</h6>
         <hr />
 
         <div class="card">
             <div class="card-body">
 
-                <form action="{{ route('admin.banner.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.banner.update', $item->id) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
 
                     <div class="row">
 
                         <div class="col-6 col-lg-3 mb-3">
                             <label for="" class="mb-2">Badge</label>
                             <input type="text" class="form-control" placeholder="Badge" name="badge"
-                                value="{{ old('badge') }}">
+                                value="{{ old('badge', $item->badge) }}">
                         </div>
 
                         <div class="col-6 col-lg-3 mb-3">
                             <label for="" class="mb-2">Banner Name</label>
                             <input type="text" class="form-control" placeholder="Banner Name" name="name"
-                                value="{{ old('name') }}">
+                                value="{{ old('name', $item->name) }}">
                         </div>
 
                         <div class="col-6 col-lg-3 mb-3">
                             <label for="" class="mb-2">Banner Sub Name</label>
                             <input type="text" class="form-control" placeholder="Banner Sub Name" name="sub_name"
-                                value="{{ old('sub_name') }}">
+                                value="{{ old('sub_name', $item->sub_name) }}">
                         </div>
 
                         <div class="col-6 col-lg-3 mb-3">
                             <label for="" class="mb-2">Link</label>
                             <input type="text" class="form-control" placeholder="Banner Link" name="link"
-                                value="{{ old('link') }}">
+                                value="{{ old('link', $item->link) }}">
                         </div>
 
                         <div class="col-6 col-lg-3 mb-3">
                             <label for="" class="mb-2">Status</label>
                             <select name="status" class="form-select" id="">
                                 <option selected disabled>Choose Option...</option>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
+                                <option value="active" {{ $item->status == 'active' ? 'selected' : '' }}>Active</option>
+                                <option value="inactive" {{ $item->status == 'inactive' ? 'selected' : '' }}>Inactive
+                                </option>
                             </select>
                         </div>
 
-                        <div class="col-3 col-lg-3 mb-3">
+                        <div class="col-6 col-lg-3 mb-3">
                             <label for="" class="mb-2">Image</label>
                             <input type="file" class="form-control" name="image" id="imageInput">
+
                             <div class="mt-2">
                                 <!-- Image Preview -->
                                 <img id="imagePreview" src="#" alt="Image Preview"
                                     style="display: none; width: 30%; height: auto;" />
                             </div>
+
+                        </div>
+
+                        <div class="col-6 col-lg-3 mb-3">
+                            <label for="" class="mb-2">Current Image</label>
+                            <div>
+                                <img src="{{ !empty($item->image) ? url('storage/' . $item->image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->name) }}"
+                                    style="width: 100px;height: 100px;" alt="">
+                            </div>
+
                         </div>
 
                         <div class="col-12 col-lg-12 mb-3">
-                            <button type="submit" class="btn btn-outline-primary rounded-0 px-3 float-end">Data Submit</button>
+                            <button type="submit" class="btn btn-outline-primary rounded-0 px-3 float-end">Update Banner</button>
                         </div>
 
                     </div>
