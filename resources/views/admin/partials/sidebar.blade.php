@@ -18,22 +18,29 @@
             </a>
         </li>
 
+        {{-- Frontend Section --}}
+        {{-- @if (Auth::guard('admin')->user()->can('role.menu')) --}}
         <li class="menu-label">Frontend Section</li>
-
         <li>
-            <a href="javascript:;" class="has-arrow">
+            <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
                 </div>
-                <div class="menu-title">eCommerce</div>
+                <div class="menu-title">Frontend Section</div>
             </a>
             <ul>
-                <li> <a href="ecommerce-products.html"><i class='bx bx-radio-circle'></i>Products</a>
+                {{-- @if (Auth::guard('admin')->user()->can('all.role')) --}}
+                <li> <a href="{{ route('admin.banner.index') }}"><i class='bx bx-radio-circle'></i>Banner</a>
                 </li>
-                <li> <a href="ecommerce-products-details.html"><i class='bx bx-radio-circle'></i>Product
-                        Details</a>
+                {{-- @endif --}}
+
+                {{-- @if (Auth::guard('admin')->user()->can('all.role')) --}}
+                <li> <a href="{{ route('all.permission') }}"><i class='bx bx-radio-circle'></i>About</a>
                 </li>
+                {{-- @endif --}}
             </ul>
         </li>
+        {{-- @endif --}}
+        {{-- Frontend Section --}}
 
         {{-- Role & Permission  --}}
 

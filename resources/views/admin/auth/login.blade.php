@@ -62,6 +62,8 @@
 
                                             <div class="form-body">
 
+                                                <x-auth-session-status class="mb-4 text-success" :status="session('status')" />
+
                                                 <form class="row g-3" action="{{ route('admin.login') }}"
                                                     method="POST">
                                                     @csrf
@@ -106,7 +108,7 @@
                                                     </div>
 
                                                     <div class="col-md-6 text-end"> <a
-                                                            href="authentication-forgot-password.html">Forgot Password
+                                                            href="{{ route('admin.password.request') }}">Forgot Password
                                                             ?</a>
                                                     </div>
                                                     <div class="col-3">

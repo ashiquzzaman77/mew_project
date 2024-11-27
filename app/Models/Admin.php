@@ -3,8 +3,6 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Notifications\Admin\ResetPassword;
-use App\Notifications\Admin\VerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,10 +10,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use App\Notifications\Admin\ResetPassword;
+use App\Notifications\Admin\VerifyEmail;
 
 class Admin extends Authenticatable
 {
-
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     protected $guard = 'admin';
@@ -72,22 +71,21 @@ class Admin extends Authenticatable
      * @param $token
      * @return void
      */
-
-    // public function sendPasswordResetNotification($token)
-    // {
-    //     $this->notify(new ResetPassword($token));
-    // }
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
+    }
 
     /**
      * Send the email verification notification.
      *
      * @return void
      */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmail);
+    }
 
-    // public function sendEmailVerificationNotification()
-    // {
-    //     $this->notify(new VerifyEmail);
-    // }
 
     public static function getpermissionGroups()
     {

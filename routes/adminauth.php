@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\AdminAuth\PasswordController;
 use App\Http\Controllers\AdminAuth\NewPasswordController;
 use App\Http\Controllers\AdminAuth\VerifyEmailController;
@@ -112,4 +113,18 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/admin-inactive/{id}', 'InactiveAdmin')->name('admin.inactive');
         Route::get('/admin-active/{id}', 'ActiveAdmin')->name('admin.active');
     });
+});
+
+
+Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(function () {
+
+    //Crud Operation
+
+    Route::resources(
+        [
+            'banner' => BannerController::class, //done
+
+        ],
+
+    );
 });
