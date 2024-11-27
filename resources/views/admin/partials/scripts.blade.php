@@ -39,13 +39,12 @@
 <script>
     $(function() {
         $(document).on('click', '#delete', function(e) {
-            e.preventDefault();
-            var link = $(this).attr("href");
+            e.preventDefault(); // Prevent the default action (which is a GET request)
 
-
+            var form = $(this).closest('form'); // Find the closest form
             Swal.fire({
                 title: 'Are you sure?',
-                text: "Delete This Data?",
+                text: "Delete this data?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -53,20 +52,18 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = link
+                    form.submit(); // Submit the form if the user confirms
                     Swal.fire(
                         'Deleted!',
-                        'Your file has been deleted.',
+                        'Your data has been deleted.',
                         'success'
-                    )
+                    );
                 }
-            })
-
-
+            });
         });
-
     });
 </script>
+
 
 
 <!--app JS-->

@@ -48,16 +48,17 @@
 
                                     <td>{{ $key + 1 }}</td>
                                     <td>
-                                        <img src="{{ !empty($item->image) ? url('storage/' . $item->image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->name) }}" style="width: 50px;height: 50px;" alt="">
+                                        <img src="{{ !empty($item->image) ? url('storage/' . $item->image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->name) }}"
+                                            style="width: 50px;height: 50px;" alt="">
                                     </td>
                                     <td>{{ $item->badge }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->sub_name }}</td>
                                     <td>
-                                        @if ( $item->status == 'active')
+                                        @if ($item->status == 'active')
                                             <span class="badge bg-success">Active</span>
                                         @else
-                                        <span class="badge bg-danger">Inactive</span>
+                                            <span class="badge bg-danger">Inactive</span>
                                         @endif
                                     </td>
 
@@ -66,8 +67,16 @@
                                         <a href="{{ route('admin.banner.edit', $item->id) }}"><i
                                                 class="fa-solid fa-pen-to-square fs-6 text-primary"></i></a>
 
-                                        <a href="{{ route('admin.banner.destroy', $item->id) }}" title="Delete"
-                                            id="delete"><i class="fa-solid fa-trash fs-6 text-danger"></i></a>
+                                        <form action="{{ route('admin.banner.destroy', $item->id) }}" method="POST"
+                                            style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="p-0" id="delete" title="Delete"
+                                                style="border: none; background: none;">
+                                                <i class="fa-solid fa-trash fs-6 text-danger"></i>
+                                            </button>
+                                        </form>
+
                                     </td>
 
                                 </tr>
