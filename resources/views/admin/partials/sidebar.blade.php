@@ -1,10 +1,10 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+            <img src="" class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <h4 class="logo-text">Rocker</h4>
+            <h4 class="logo-text">Template</h4>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
         </div>
@@ -18,19 +18,11 @@
             </a>
         </li>
 
-        <li class="menu-label">UI Elements</li>
-
-        <li>
-            <a href="widgets.html">
-                <div class="parent-icon"><i class='bx bx-cookie'></i>
-                </div>
-                <div class="menu-title">Widgets</div>
-            </a>
-        </li>
+        <li class="menu-label">Frontend Section</li>
 
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-cart'></i>
+                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
                 </div>
                 <div class="menu-title">eCommerce</div>
             </a>
@@ -40,43 +32,45 @@
                 <li> <a href="ecommerce-products-details.html"><i class='bx bx-radio-circle'></i>Product
                         Details</a>
                 </li>
-                <li> <a href="ecommerce-add-new-products.html"><i class='bx bx-radio-circle'></i>Add New
-                        Products</a>
-                </li>
-                <li> <a href="ecommerce-orders.html"><i class='bx bx-radio-circle'></i>Orders</a>
-                </li>
             </ul>
         </li>
 
+        {{-- Role & Permission  --}}
 
-
-
-
-        <li class="menu-label">Forms & Tables</li>
+        {{-- @if (Auth::guard('admin')->user()->can('role.menu')) --}}
+        <li class="menu-label">Role & Permission</li>
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
                 </div>
-                <div class="menu-title">Forms</div>
+                <div class="menu-title">Role & Permission</div>
             </a>
             <ul>
-                <li> <a href="form-elements.html"><i class='bx bx-radio-circle'></i>Form Elements</a>
+                {{-- @if (Auth::guard('admin')->user()->can('all.role')) --}}
+                <li> <a href="{{ route('all.role') }}"><i class='bx bx-radio-circle'></i>All Role</a>
                 </li>
-                <li> <a href="form-input-group.html"><i class='bx bx-radio-circle'></i>Input Groups</a>
+                {{-- @endif --}}
+                {{-- @if (Auth::guard('admin')->user()->can('all.role')) --}}
+                <li> <a href="{{ route('all.permission') }}"><i class='bx bx-radio-circle'></i>All
+                        Permission</a>
                 </li>
+                {{-- @endif --}}
             </ul>
         </li>
+        {{-- @endif --}}
 
+        {{-- Role & Permission  --}}
 
-
-
+        {{-- Site Setting --}}
+        <li class="menu-label">Site Setting</li>
         <li>
             <a href="https://themeforest.net/user/codervent" target="_blank">
-                <div class="parent-icon"><i class="bx bx-support"></i>
+                <div class="parent-icon"><i class="bx bx-message-square-edit"></i>
                 </div>
-                <div class="menu-title">Support</div>
+                <div class="menu-title">Setting</div>
             </a>
         </li>
+        {{-- Site Setting --}}
 
     </ul>
     <!--end navigation-->

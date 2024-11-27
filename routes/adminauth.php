@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\AdminAuth\AuthenticatedSessionController;
-use App\Http\Controllers\AdminAuth\ConfirmablePasswordController;
-use App\Http\Controllers\AdminAuth\EmailVerificationNotificationController;
-use App\Http\Controllers\AdminAuth\EmailVerificationPromptController;
-use App\Http\Controllers\AdminAuth\NewPasswordController;
-use App\Http\Controllers\AdminAuth\PasswordController;
-use App\Http\Controllers\AdminAuth\PasswordResetLinkController;
-use App\Http\Controllers\AdminAuth\VerifyEmailController;
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\AdminAuth\PasswordController;
+use App\Http\Controllers\AdminAuth\NewPasswordController;
+use App\Http\Controllers\AdminAuth\VerifyEmailController;
+use App\Http\Controllers\AdminAuth\PasswordResetLinkController;
+use App\Http\Controllers\AdminAuth\ConfirmablePasswordController;
+use App\Http\Controllers\AdminAuth\AuthenticatedSessionController;
+
+use App\Http\Controllers\AdminAuth\EmailVerificationPromptController;
+use App\Http\Controllers\AdminAuth\EmailVerificationNotificationController;
 
 Route::middleware('guest:admin')->group(function () {
 
@@ -72,4 +73,43 @@ Route::middleware(['auth:admin', 'verified'])->group(function () {
     //Admin Password
     Route::get('/admin-password', [AdminController::class, 'AdminPasswordPage'])->name('admin.password.page');
     Route::post('/admin/password/update/submit', [AdminController::class, 'AdminPasswordUpdateSubmit'])->name('admin.password.update.submit');
+});
+
+
+// Role In Permission
+Route::middleware(['auth:admin'])->group(function () {
+
+    Route::controller(RoleController::class)->group(function () {
+
+        //Permission
+        Route::get('/all/permission', 'AllPermission')->name('all.permission');
+        Route::post('/store/permission', 'StorePermission')->name('store.permission');
+        Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
+        Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
+        Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+
+        //Role
+        Route::get('/all/role', 'AllRole')->name('all.role');
+        Route::post('/store/role', 'StoreRole')->name('store.role');
+        Route::post('/update/role', 'UpdateRole')->name('update.role');
+        Route::get('/delete/role/{id}', 'DeleteRole')->name('delete.role');
+
+        //Role In Permission
+        Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
+        Route::post('/role/permission/store', 'RolePermissionStore')->name('store.roles.permission');
+        Route::get('/all/roles/permission', 'AllRolesPermission')->name('all.roles.permission');
+        Route::get('/admin/edit/roles/{id}', 'AdminRolesEdit')->name('admin.edit.roles');
+        Route::post('/admin/roles/update/{id}', 'AdminRolesUpdate')->name('admin.roles.update');
+        Route::get('/admin/delete/roles/{id}', 'AdminRolesDelete')->name('admin.delete.roles');
+
+        //Admin Role Permission
+        Route::get('/admin-all', 'AdminPermission')->name('all.admin.permission');
+        Route::post('/admin-store', 'StoreAdminPermission')->name('store.admin.permission');
+        Route::get('/admin-edit/{id}', 'EditAdminPermission')->name('edit.admin.permission');
+        Route::post('/admin-update/{id}', 'UpdateAdmin')->name('update.admin');
+        Route::get('/admin-delete/{id}', 'DeleteAdmin')->name('delete.admin');
+
+        Route::get('/admin-inactive/{id}', 'InactiveAdmin')->name('admin.inactive');
+        Route::get('/admin-active/{id}', 'ActiveAdmin')->name('admin.active');
+    });
 });
