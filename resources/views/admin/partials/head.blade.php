@@ -4,9 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{-- <meta http-equiv="refresh" content="30"> --}}
 
-    <meta name="description" content="{!! optional($meta->first())->description !!}">
-    <meta name="keywords" content="{{ optional($meta->first())->keyword }}">
-    <meta name="author" content="{{ optional($meta->first())->name }}">
+    {{-- <meta name="description" content="{!! optional($meta)->description ?? '' !!}">
+    <meta name="keywords" content="{{ optional($meta)->keyword ?? '' }}">
+    <meta name="author" content="{{ optional($meta)->name ?? '' }}"> --}}
+
 
     {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 

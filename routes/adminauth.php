@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\MetaController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\AdminAuth\PasswordController;
 use App\Http\Controllers\AdminAuth\NewPasswordController;
 use App\Http\Controllers\AdminAuth\VerifyEmailController;
@@ -127,6 +128,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
         [
             'banner' => BannerController::class, //done
             'team' => TeamController::class, //done
+            'testimonial' => TestimonialController::class, //done
 
         ],
 
