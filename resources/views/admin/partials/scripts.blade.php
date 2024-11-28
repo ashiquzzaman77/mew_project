@@ -36,6 +36,24 @@
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Initialize CKEditor for each textarea with the class 'editor'
+        document.querySelectorAll('.editor').forEach(function(textarea) {
+            ClassicEditor
+                .create(textarea)
+                .then(editor => {
+                    console.log("CKEditor initialized successfully:", editor);
+                })
+                .catch(error => {
+                    console.error("CKEditor initialization error:", error);
+                });
+        });
+    });
+</script>
+
 <script>
     $(function() {
         $(document).on('click', '#delete', function(e) {
@@ -63,8 +81,6 @@
         });
     });
 </script>
-
-
 
 <!--app JS-->
 <script src="{{ asset('admin/assets/js/app.js') }}"></script>

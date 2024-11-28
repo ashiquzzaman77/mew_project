@@ -14,22 +14,7 @@
                     </ol>
                 </nav>
             </div>
-            {{-- <div class="ms-auto">
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary">Settings</button>
-                <button type="button"
-                    class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
-                    data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"> <a class="dropdown-item"
-                        href="javascript:;">Action</a>
-                    <a class="dropdown-item" href="javascript:;">Another action</a>
-                    <a class="dropdown-item" href="javascript:;">Something else here</a>
-                    <div class="dropdown-divider"></div> <a class="dropdown-item" href="javascript:;">Separated
-                        link</a>
-                </div>
-            </div>
-        </div> --}}
+
         </div>
         <!--end breadcrumb-->
 
@@ -38,69 +23,17 @@
             <div class="main-body">
                 <div class="row">
 
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex flex-column align-items-center text-center">
-
-                                    <img src="{{ $profileData->photo ? asset('upload/admin_images/' . $profileData->photo) : asset('admin/assets/images/avatars/avatar-2.png') }}"
-                                        alt="Admin" class="rounded-circle p-1" style="width:120px;height:120px">
-
-
-                                    <div class="mt-3">
-                                        <h4>{{ $profileData->name }}</h4>
-                                        <p class="text-secondary mb-1">{{ $profileData->email }}</p>
-                                        <p class="text-muted font-size-sm">{{ $profileData->address }}</p>
-
-                                    </div>
-                                </div>
-                                <hr class="my-4">
-                                <ul class="list-group list-group-flush">
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">
-                                            Name:
-                                        </h6>
-                                        <span class="text-secondary">{{ $profileData->name }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Email:</h6>
-                                        <span class="text-secondary">{{ $profileData->email }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Phone:</h6>
-                                        <span class="text-secondary">{{ $profileData->phone }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Address:</h6>
-                                        <span class="text-secondary">{{ $profileData->address }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Company Name:</h6>
-                                        <span class="text-secondary">{{ $profileData->company_name }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Degination:</h6>
-                                        <span class="text-secondary">{{ $profileData->degination }}</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    @include('admin.partials.profile_sidebar')
 
                     <div class="col-lg-8">
 
                         <div class="card">
                             <div class="card-body">
 
-                                <form action="{{ route('admin.password.update.submit') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('admin.password.update.submit') }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
-                                
+
                                     <!-- Old Password -->
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
@@ -113,42 +46,60 @@
                                             @enderror
                                         </div>
                                     </div>
-                                
+
                                     <!-- New Password -->
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">New Password</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <input type="password" class="form-control" name="new_password">
+                                        <div class="col-sm-4 text-secondary">
+                                            <input type="password" class="form-control" name="new_password"
+                                                id="new_password" onkeyup="checkPasswordStrength()">
                                             @error('new_password')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
+
+                                        <div class="col-sm-5 condition">
+                                            <ul style="list-style-type: disc; padding-left: 20px;">
+                                                <li id="condition1" style="color: red;">Password must use Uppercase &
+                                                    Lowercase letters</li>
+                                                <li id="condition2" style="color: red;">Password must include at least
+                                                    one Special Character</li>
+                                                <li id="condition3" style="color: red;">Password must include at least
+                                                    one Letter</li>
+                                                <li id="condition4" style="color: red;">Password must contain at least
+                                                    one Number</li>
+                                                <li id="condition5" style="color: red;">Password must be at least 8
+                                                    characters long</li>
+                                            </ul>
+                                        </div>
+
                                     </div>
-                                
+
                                     <!-- Confirm New Password -->
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Confirm Password</h6>
                                         </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <input type="password" class="form-control" name="new_password_confirmation">
+                                        <div class="col-sm-4 text-secondary">
+                                            <input type="password" class="form-control"
+                                                name="new_password_confirmation">
                                             @error('new_password_confirmation')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
-                                
+
                                     <!-- Submit Button -->
                                     <div class="row">
                                         <div class="col-sm-3"></div>
                                         <div class="col-sm-9 text-secondary">
-                                            <button type="submit" class="btn btn-outline-primary px-3 rounded-0">Update Password</button>
+                                            <button type="submit" class="btn btn-outline-primary px-3 rounded-0">Update
+                                                Password</button>
                                         </div>
                                     </div>
                                 </form>
-                                
 
                             </div>
                         </div>
@@ -161,6 +112,26 @@
         </div>
     </div>
 
+    <script>
+        // Function to check the password strength and apply color change
+        function checkPasswordStrength() {
+            var password = document.getElementById('new_password').value;
 
+            // Regular expressions to check different conditions
+            var upperCase = /[A-Z]/;
+            var lowerCase = /[a-z]/;
+            var specialChar = /[!@#$%^&*(),.?":{}|<>]/;
+            var numbers = /\d/;
+            var length = password.length >= 8;
+
+            // Check each condition and update the color accordingly
+            document.getElementById('condition1').style.color = (upperCase.test(password) && lowerCase.test(password)) ?
+                'green' : 'red';
+            document.getElementById('condition2').style.color = specialChar.test(password) ? 'green' : 'red';
+            document.getElementById('condition3').style.color = /[a-zA-Z]/.test(password) ? 'green' : 'red';
+            document.getElementById('condition4').style.color = numbers.test(password) ? 'green' : 'red';
+            document.getElementById('condition5').style.color = length ? 'green' : 'red';
+        }
+    </script>
 
 </x-admin-app-layout>

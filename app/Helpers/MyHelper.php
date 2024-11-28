@@ -5,26 +5,26 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
 
-// if (!function_exists('handaleFileUpload')) {
-//     function handaleFileUpload(UploadedFile $file, $folder = 'default')
-//     {
-//         if (!$file->isValid()) {
-//             abort(422, 'Invalid file');
-//         }
+if (!function_exists('handaleFileUpload')) {
+    function handaleFileUpload(UploadedFile $file, $folder = 'default')
+    {
+        if (!$file->isValid()) {
+            abort(422, 'Invalid file');
+        }
 
-//         $extension = $file->getClientOriginalExtension();
-//         $folderType = in_array($extension, ['jpg', 'jpeg', 'png', 'gif']) ? 'images' : 'files';
+        $extension = $file->getClientOriginalExtension();
+        $folderType = in_array($extension, ['jpg', 'jpeg', 'png', 'gif']) ? 'images' : 'files';
 
-//         $path = Storage::disk('public')->putFile("$folderType/$folder", $file);
+        $path = Storage::disk('public')->putFile("$folderType/$folder", $file);
 
-//         if (!$path) {
-//             abort(500, 'Error occurred while moving the file');
-//         }
+        if (!$path) {
+            abort(500, 'Error occurred while moving the file');
+        }
 
-//         // Return only the file path as a string
-//         return $path;
-//     }
-// }
+        // Return only the file path as a string
+        return $path;
+    }
+}
 
 // if (!function_exists('noImage')) {
 //     function noImage()

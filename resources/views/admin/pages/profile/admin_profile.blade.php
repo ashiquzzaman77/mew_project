@@ -38,60 +38,7 @@
             <div class="main-body">
                 <div class="row">
 
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex flex-column align-items-center text-center">
-
-                                    <img src="{{ $profileData->photo ? asset('upload/admin_images/' . $profileData->photo) : asset('admin/assets/images/avatars/avatar-2.png') }}"
-                                        alt="Admin" class="rounded-circle p-1" style="width:120px;height:120px">
-
-
-                                    <div class="mt-3">
-                                        <h4>{{ $profileData->name }}</h4>
-                                        <p class="text-secondary mb-1">{{ $profileData->email }}</p>
-                                        <p class="text-muted font-size-sm">{{ $profileData->address }}</p>
-
-                                    </div>
-                                </div>
-                                <hr class="my-4">
-                                <ul class="list-group list-group-flush">
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">
-                                            Name:
-                                        </h6>
-                                        <span class="text-secondary">{{ $profileData->name }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Email:</h6>
-                                        <span class="text-secondary">{{ $profileData->email }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Phone:</h6>
-                                        <span class="text-secondary">{{ $profileData->phone }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Address:</h6>
-                                        <span class="text-secondary">{{ $profileData->address }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Company Name:</h6>
-                                        <span class="text-secondary">{{ $profileData->company_name }}</span>
-                                    </li>
-                                    <li
-                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 class="mb-0">Degination:</h6>
-                                        <span class="text-secondary">{{ $profileData->degination }}</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    @include('admin.partials.profile_sidebar')
 
                     <div class="col-lg-8">
 

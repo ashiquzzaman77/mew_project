@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="col-6 col-lg-3 mb-3">
-                            <label for="" class="mb-2">Link</label>
+                            <label for="" class="mb-2">Button Link</label>
                             <input type="text" class="form-control" placeholder="Banner Link" name="link"
                                 value="{{ old('link', $item->link) }}">
                         </div>
@@ -93,7 +93,8 @@
                         </div>
 
                         <div class="col-12 col-lg-12 mb-3">
-                            <button type="submit" class="btn btn-outline-primary rounded-0 px-3 float-end">Update Banner</button>
+                            <button type="submit" class="btn btn-outline-primary rounded-0 px-3 float-end">Update
+                                Data</button>
                         </div>
 
                     </div>

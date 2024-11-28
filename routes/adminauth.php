@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\MetaController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\AdminAuth\PasswordController;
 use App\Http\Controllers\AdminAuth\NewPasswordController;
 use App\Http\Controllers\AdminAuth\VerifyEmailController;
@@ -127,4 +129,14 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
         ],
 
     );
+
+    //Setting Section
+    Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
+    Route::put('/settings', [SettingController::class, 'updateOrcreateSetting'])->name('settings.updateOrCreate');
+
+    //Meta Section
+    Route::get('/meta', [MetaController::class, 'indexMeta'])->name('meta.indexMeta');
+    Route::put('/meta', [MetaController::class, 'updateOrcreateMeta'])->name('meta.updateOrCreateMeta');
+
+    Route::get('/backup', [AdminController::class, 'downloadBackup'])->name('meta.download');
 });

@@ -1,10 +1,10 @@
 <header>
-    <div class="topbar d-flex align-items-center">
+    <div class="topbar d-flex align-items-center justify-space-between">
         <nav class="navbar navbar-expand gap-3">
             <div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
             </div>
 
-            <div class="btn btn-primary">
+            <div class="btn btn-primary rounded-0">
                 <a href="" class="text-light px-3 border-0">Fronted</a>
             </div>
 
@@ -33,8 +33,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Slack</p>
@@ -46,8 +45,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Behance</p>
@@ -59,8 +57,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Dribble</p>
@@ -72,8 +69,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Outlook</p>
@@ -85,8 +81,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">GitHub</p>
@@ -98,8 +93,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Stack</p>
@@ -111,8 +105,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Stack</p>
@@ -124,8 +117,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Twitter</p>
@@ -137,8 +129,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Calendar</p>
@@ -150,8 +141,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Spotify</p>
@@ -163,8 +153,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Photos</p>
@@ -176,8 +165,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Photos</p>
@@ -189,8 +177,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">linkedin</p>
@@ -202,8 +189,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Dribble</p>
@@ -215,8 +201,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">YouTube</p>
@@ -228,8 +213,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">News</p>
@@ -241,8 +225,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Envato</p>
@@ -254,8 +237,7 @@
                                         <a href="javascript:;">
                                             <div class="app-box text-center">
                                                 <div class="app-icon">
-                                                    <img src="" width="30"
-                                                        alt="">
+                                                    <img src="" width="30" alt="">
                                                 </div>
                                                 <div class="app-name">
                                                     <p class="mb-0 mt-1">Safari</p>
@@ -287,8 +269,7 @@
                                 <a class="dropdown-item" href="javascript:;">
                                     <div class="d-flex align-items-center">
                                         <div class="user-online">
-                                            <img src="" class="msg-avatar"
-                                                alt="user avatar">
+                                            <img src="" class="msg-avatar" alt="user avatar">
                                         </div>
                                         <div class="flex-grow-1">
                                             <h6 class="msg-name">Daisy Anderson<span class="msg-time float-end">5 sec
@@ -297,15 +278,15 @@
                                         </div>
                                     </div>
                                 </a>
-                               
-                               
-                               
-                            <a href="javascript:;">
-                                <div class="text-center msg-footer">
-                                    <button class="btn btn-primary w-100">View All Notifications</button>
-                                </div>
-                            </a>
-                        </div>
+
+
+
+                                <a href="javascript:;">
+                                    <div class="text-center msg-footer">
+                                        <button class="btn btn-primary w-100">View All Notifications</button>
+                                    </div>
+                                </a>
+                            </div>
                     </li>
 
                     <li class="nav-item dropdown dropdown-large d-none">
@@ -327,8 +308,7 @@
                                     <div class="d-flex align-items-center gap-3">
                                         <div class="position-relative">
                                             <div class="cart-product rounded-circle bg-light">
-                                                <img src="" class=""
-                                                    alt="product image">
+                                                <img src="" class="" alt="product image">
                                             </div>
                                         </div>
                                         <div class="flex-grow-1">
@@ -343,7 +323,7 @@
                                     </div>
                                 </a>
 
-                               
+
                             </div>
                             <a href="javascript:;">
                                 <div class="text-center msg-footer">
@@ -406,6 +386,7 @@
 
                 </ul>
             </div>
+
         </nav>
     </div>
 </header>

@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="col-6 col-lg-3 mb-3">
-                            <label for="" class="mb-2">Link</label>
+                            <label for="" class="mb-2">Button Link</label>
                             <input type="text" class="form-control" placeholder="Banner Link" name="link"
                                 value="{{ old('link') }}">
                         </div>

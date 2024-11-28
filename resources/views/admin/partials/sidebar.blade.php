@@ -42,6 +42,31 @@
         {{-- @endif --}}
         {{-- Frontend Section --}}
 
+        {{-- Management Section --}}
+        <li class="menu-label">Management Section</li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                </div>
+                <div class="menu-title">Management</div>
+            </a>
+            <ul>
+
+                {{-- @if (Auth::guard('admin')->user()->can('all.role')) --}}
+                <li> <a href="{{ route('all.admin.permission') }}"><i class='bx bx-radio-circle'></i>Admin</a>
+                </li>
+                {{-- @endif --}}
+
+                {{-- @if (Auth::guard('admin')->user()->can('all.role')) --}}
+                {{-- <li> <a href="{{ route('all.permission') }}"><i class='bx bx-radio-circle'></i>About</a>
+                </li> --}}
+                {{-- @endif --}}
+
+            </ul>
+        </li>
+        {{-- Management Section --}}
+
+
         {{-- Role & Permission  --}}
 
         {{-- @if (Auth::guard('admin')->user()->can('role.menu')) --}}
@@ -68,16 +93,16 @@
 
         {{-- Role & Permission  --}}
 
-        {{-- Site Setting --}}
-        <li class="menu-label">Site Setting</li>
+        {{-- Other Section --}}
+        <li class="menu-label">Other Section</li>
         <li>
-            <a href="https://themeforest.net/user/codervent" target="_blank">
+            <a href="{{ route('admin.settings.index') }}">
                 <div class="parent-icon"><i class="bx bx-message-square-edit"></i>
                 </div>
                 <div class="menu-title">Setting</div>
             </a>
         </li>
-        {{-- Site Setting --}}
+        {{-- Other Section --}}
 
     </ul>
     <!--end navigation-->

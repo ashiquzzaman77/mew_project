@@ -227,6 +227,7 @@ class RoleController extends Controller
         $user->designation = $request->designation;
         $user->address = $request->address;
         $user->phone = $request->phone;
+        $user->password = Hash::make($request->password);
 
         $user->email = $request->email;
         $user->status = $request->status;

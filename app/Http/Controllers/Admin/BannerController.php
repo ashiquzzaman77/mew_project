@@ -155,7 +155,7 @@ class BannerController extends Controller
         }
         $item->delete();
 
-        return redirect()->route('admin.banner.index')->with('success', 'Banner Delete Successfully!!');
+        return redirect()->route('admin.banner.index')->with('success', 'Data Delete Successfully!!');
     }
 
 }
