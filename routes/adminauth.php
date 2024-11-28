@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\MetaController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\AdminAuth\PasswordController;
 use App\Http\Controllers\AdminAuth\NewPasswordController;
 use App\Http\Controllers\AdminAuth\VerifyEmailController;
@@ -125,6 +126,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::resources(
         [
             'banner' => BannerController::class, //done
+            'team' => TeamController::class, //done
 
         ],
 
@@ -138,5 +140,6 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::get('/meta', [MetaController::class, 'indexMeta'])->name('meta.indexMeta');
     Route::put('/meta', [MetaController::class, 'updateOrcreateMeta'])->name('meta.updateOrCreateMeta');
 
+    //Backup
     Route::get('/backup', [AdminController::class, 'downloadBackup'])->name('meta.download');
 });

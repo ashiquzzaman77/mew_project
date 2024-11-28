@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Banner;
+use App\Models\Team;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
-class BannerController extends Controller
+class TeamController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $items = Banner::latest()->get();
-        return view('admin.pages.banner.index', compact('items'));
+        $items = Team::orderBy('order', 'asc')->get(); // Change 'asc' to 'desc' for descending order
+        return view('admin.pages.team.index', compact('items'));
     }
 
     /**
@@ -23,7 +23,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.banner.create');
+        return view('admin.pages.team.create');
     }
 
     /**
@@ -33,7 +33,8 @@ class BannerController extends Controller
     {
         // Validate the incoming request data
         $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:1024',
+            'order' => 'nullable|integer|unique:teams,order'
         ]);
 
         $uploadedFiles = [];
@@ -45,7 +46,7 @@ class BannerController extends Controller
 
         foreach ($files as $key => $file) {
             if (!empty($file)) {
-                $filePath = 'banner/' . $key;
+                $filePath = 'team/' . $key;
                 $uploadedFiles[$key] = newUpload($file, $filePath);
                 if ($uploadedFiles[$key]['status'] === 0) {
                     return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
@@ -56,18 +57,24 @@ class BannerController extends Controller
         }
 
         // Create the event in the database
-        Banner::create([
+        Team::create([
 
-            'badge' => $request->badge,
             'name' => $request->name,
-            'sub_name' => $request->sub_name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'facebook' => $request->facebook,
+            'linkedin' => $request->linkedin,
+            'instagram' => $request->instagram,
+            'whatsapp' => $request->whatsapp,
+            'twitter' => $request->twitter,
+            'order' => $request->order,
+            'description' => $request->description,
             'status' => $request->status,
-            'link' => $request->link,
 
             'image' => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : null,
         ]);
 
-        return redirect()->route('admin.banner.index')->with('success', 'Data Inserted Successfully!');
+        return redirect()->route('admin.team.index')->with('success', 'Data Inserted Successfully!');
     }
 
     /**
@@ -83,8 +90,8 @@ class BannerController extends Controller
      */
     public function edit(string $id)
     {
-        $item = Banner::findOrFail($id);
-        return view('admin.pages.banner.edit', compact('item'));
+        $item = Team::findOrFail($id);
+        return view('admin.pages.team.edit', compact('item'));
     }
 
     /**
@@ -92,7 +99,12 @@ class BannerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $item = Banner::findOrFail($id);
+        $request->validate([
+            'order' => 'required|integer|unique:teams,order,' . $id,
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:1024',
+        ]);
+
+        $item = Team::findOrFail($id);
 
         // Define upload paths
         $uploadedFiles = [];
@@ -104,7 +116,7 @@ class BannerController extends Controller
 
         foreach ($files as $key => $file) {
             if (!empty($file)) {
-                $filePath = 'banner/' . $key;
+                $filePath = 'team/' . $key;
                 $oldFile = $item->$key ?? null;
 
                 if ($oldFile) {
@@ -122,17 +134,23 @@ class BannerController extends Controller
         // Update the item with new values
         $item->update([
 
-            'badge' => $request->badge,
             'name' => $request->name,
-            'sub_name' => $request->sub_name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'facebook' => $request->facebook,
+            'linkedin' => $request->linkedin,
+            'instagram' => $request->instagram,
+            'whatsapp' => $request->whatsapp,
+            'twitter' => $request->twitter,
+            'order' => $request->order,
+            'description' => $request->description,
             'status' => $request->status,
-            'link' => $request->link,
 
             'image' => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : $item->image,
 
         ]);
 
-        return redirect()->route('admin.banner.index')->with('success', 'Data Updated Successfully!!');
+        return redirect()->route('admin.team.index')->with('success', 'Banner Updated Successfully!!');
     }
 
     /**
@@ -140,7 +158,7 @@ class BannerController extends Controller
      */
     public function destroy(string $id)
     {
-        $item = Banner::findOrFail($id);
+        $item = Team::findOrFail($id);
 
         $files = [
             'image' => $item->image,
@@ -155,7 +173,6 @@ class BannerController extends Controller
         }
         $item->delete();
 
-        return redirect()->route('admin.banner.index')->with('success', 'Data Delete Successfully!!');
+        return redirect()->route('admin.team.index')->with('success', 'Data Delete Successfully!!');
     }
-
 }
