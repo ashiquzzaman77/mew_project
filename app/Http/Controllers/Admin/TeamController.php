@@ -33,7 +33,7 @@ class TeamController extends Controller
     {
         // Validate the incoming request data
         $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:1024',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'order' => 'nullable|integer|unique:teams,order'
         ]);
 
@@ -102,7 +102,7 @@ class TeamController extends Controller
     {
         $request->validate([
             'order' => 'required|integer|unique:teams,order,' . $id,
-            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:1024',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         $item = Team::findOrFail($id);

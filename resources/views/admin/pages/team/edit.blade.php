@@ -119,7 +119,11 @@
 
                         <div class="col-12 col-lg-4 mb-3">
                             <label for="" class="mb-2">Image</label>
-                            <input type="file" class="form-control" name="image" id="imageInput">
+                            <input type="file" class="form-control @error('image') is-invalid @enderror"
+                                name="image" id="imageInput">
+                            @error('image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                             <div class="mt-2">
                                 <!-- Image Preview -->
                                 <img id="imagePreview" src="#" alt="Image Preview"
