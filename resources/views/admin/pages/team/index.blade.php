@@ -34,7 +34,8 @@
                             <tr>
                                 <th style="width:3%">Sl</th>
                                 <th style="width:6%">Image</th>
-                                <th style="width:20%">Name</th>
+                                <th style="width:15%">Name</th>
+                                <th style="width:10%">Designation</th>
                                 <th style="width:10%">Email</th>
                                 <th style="width:10%">Phone</th>
                                 <th style="width:2%">Order</th>
@@ -53,6 +54,7 @@
                                             style="width: 50px;height: 50px;" alt="">
                                     </td>
                                     <td>{{ $item->name }}</td>
+                                    <td>{{ $item->designation }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->order }}</td>

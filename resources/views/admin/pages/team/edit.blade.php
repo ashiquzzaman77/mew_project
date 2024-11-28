@@ -35,7 +35,7 @@
 
                     <div class="row">
 
-                        <div class="col-12 col-lg-2 mb-3">
+                        <div class="col-12 col-lg-3 mb-3">
                             <label for="" class="mb-2">Order</label>
                             <input type="number" class="form-control @error('order') is-invalid @enderror" required
                                 placeholder="Serial No" name="order" value="{{ old('order', $item->order) }}">
@@ -47,10 +47,16 @@
 
 
                         <!-- Name Field -->
-                        <div class="col-12 col-lg-4 mb-3">
+                        <div class="col-12 col-lg-3 mb-3">
                             <label for="" class="mb-2">Name</label>
                             <input type="text" class="form-control" required placeholder="Name" name="name"
                                 value="{{ old('name', $item->name ?? '') }}">
+                        </div>
+
+                        <div class="col-12 col-lg-3 mb-3">
+                            <label for="" class="mb-2">Designation</label>
+                            <input type="text" class="form-control" placeholder="Designation" name="designation"
+                                value="{{ old('designation', $item->designation ?? '') }}">
                         </div>
 
                         <!-- Email Field -->
@@ -111,7 +117,7 @@
                             </select>
                         </div>
 
-                        <div class="col-12 col-lg-3 mb-3">
+                        <div class="col-12 col-lg-4 mb-3">
                             <label for="" class="mb-2">Image</label>
                             <input type="file" class="form-control" name="image" id="imageInput">
                             <div class="mt-2">
@@ -121,7 +127,7 @@
                             </div>
                         </div>
 
-                        <div class="col-6 col-lg-3 mb-3">
+                        <div class="col-6 col-lg-2 mb-3">
                             <label for="" class="mb-2">Current Image</label>
                             <div>
                                 <img src="{{ !empty($item->image) ? url('storage/' . $item->image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->name) }}"

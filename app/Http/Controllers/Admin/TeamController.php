@@ -60,6 +60,7 @@ class TeamController extends Controller
         Team::create([
 
             'name' => $request->name,
+            'designation' => $request->designation,
             'email' => $request->email,
             'phone' => $request->phone,
             'facebook' => $request->facebook,
@@ -135,6 +136,7 @@ class TeamController extends Controller
         $item->update([
 
             'name' => $request->name,
+            'designation' => $request->designation,
             'email' => $request->email,
             'phone' => $request->phone,
             'facebook' => $request->facebook,

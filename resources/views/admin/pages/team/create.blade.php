@@ -52,6 +52,12 @@
                         </div>
 
                         <div class="col-12 col-lg-3 mb-3">
+                            <label for="" class="mb-2">Designation</label>
+                            <input type="text" class="form-control" placeholder="Designation" name="designation"
+                                value="{{ old('designation') }}">
+                        </div>
+
+                        <div class="col-12 col-lg-3 mb-3">
                             <label for="" class="mb-2">Email</label>
                             <input type="email" class="form-control" placeholder="Emaill Address" name="email"
                                 value="{{ old('email') }}">
