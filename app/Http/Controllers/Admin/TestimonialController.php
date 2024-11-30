@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Team;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
-class TeamController extends Controller
+class TestimonialController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $items = Team::orderBy('order', 'asc')->get(); // Change 'asc' to 'desc' for descending order
-        return view('admin.pages.team.index', compact('items'));
+        $items = Testimonial::orderBy('order', 'asc')->get(); // Change 'asc' to 'desc' for descending order
+        return view('admin.pages.testimonial.index', compact('items'));
     }
 
     /**
@@ -23,7 +23,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.team.create');
+        return view('admin.pages.testimonial.create');
     }
 
     /**
@@ -34,7 +34,7 @@ class TeamController extends Controller
         // Validate the incoming request data
         $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'order' => 'nullable|integer|unique:teams,order'
+            'order' => 'nullable|integer|unique:testimonials,order'
         ]);
 
         $uploadedFiles = [];
@@ -46,7 +46,7 @@ class TeamController extends Controller
 
         foreach ($files as $key => $file) {
             if (!empty($file)) {
-                $filePath = 'team/' . $key;
+                $filePath = 'testimonial/' . $key;
                 $uploadedFiles[$key] = newUpload($file, $filePath);
                 if ($uploadedFiles[$key]['status'] === 0) {
                     return redirect()->back()->with('error', $uploadedFiles[$key]['error_message']);
@@ -57,17 +57,11 @@ class TeamController extends Controller
         }
 
         // Create the event in the database
-        Team::create([
+        Testimonial::create([
 
             'name' => $request->name,
             'designation' => $request->designation,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'facebook' => $request->facebook,
-            'linkedin' => $request->linkedin,
-            'instagram' => $request->instagram,
-            'whatsapp' => $request->whatsapp,
-            'twitter' => $request->twitter,
+            'rating' => $request->rating,
             'order' => $request->order,
             'description' => $request->description,
             'status' => $request->status,
@@ -75,7 +69,7 @@ class TeamController extends Controller
             'image' => $uploadedFiles['image']['status'] == 1 ? $uploadedFiles['image']['file_path'] : null,
         ]);
 
-        return redirect()->route('admin.team.index')->with('success', 'Data Inserted Successfully!');
+        return redirect()->route('admin.testimonial.index')->with('success', 'Data Inserted Successfully!');
     }
 
     /**
@@ -91,8 +85,8 @@ class TeamController extends Controller
      */
     public function edit(string $id)
     {
-        $item = Team::findOrFail($id);
-        return view('admin.pages.team.edit', compact('item'));
+        $item = Testimonial::findOrFail($id);
+        return view('admin.pages.testimonial.edit', compact('item'));
     }
 
     /**
@@ -105,7 +99,7 @@ class TeamController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
-        $item = Team::findOrFail($id);
+        $item = Testimonial::findOrFail($id);
 
         // Define upload paths
         $uploadedFiles = [];
@@ -117,7 +111,7 @@ class TeamController extends Controller
 
         foreach ($files as $key => $file) {
             if (!empty($file)) {
-                $filePath = 'team/' . $key;
+                $filePath = 'testimonial/' . $key;
                 $oldFile = $item->$key ?? null;
 
                 if ($oldFile) {
@@ -137,13 +131,7 @@ class TeamController extends Controller
 
             'name' => $request->name,
             'designation' => $request->designation,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'facebook' => $request->facebook,
-            'linkedin' => $request->linkedin,
-            'instagram' => $request->instagram,
-            'whatsapp' => $request->whatsapp,
-            'twitter' => $request->twitter,
+            'rating' => $request->rating,
             'order' => $request->order,
             'description' => $request->description,
             'status' => $request->status,
@@ -152,7 +140,7 @@ class TeamController extends Controller
 
         ]);
 
-        return redirect()->route('admin.team.index')->with('success', 'Data Updated Successfully!!');
+        return redirect()->route('admin.testimonial.index')->with('success', 'Data Updated Successfully!!');
     }
 
     /**
@@ -160,7 +148,7 @@ class TeamController extends Controller
      */
     public function destroy(string $id)
     {
-        $item = Team::findOrFail($id);
+        $item = Testimonial::findOrFail($id);
 
         $files = [
             'image' => $item->image,
@@ -175,6 +163,6 @@ class TeamController extends Controller
         }
         $item->delete();
 
-        return redirect()->route('admin.team.index')->with('success', 'Data Delete Successfully!!');
+        return redirect()->route('admin.testimonial.index')->with('success', 'Data Delete Successfully!!');
     }
 }
