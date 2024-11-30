@@ -4,9 +4,10 @@
             <div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
             </div>
 
-            <div class="btn btn-primary rounded-0">
-                <a href="" class="text-light px-3 border-0">Fronted</a>
+            <div class="btn btn-primary border-0 rounded-0" style="background: linear-gradient(45deg, #01294e, #0d0d61);">
+                <a href="" class="text-light px-4 border-0">Fronted</a>
             </div>
+
 
             <div class="top-menu ms-auto">
                 <ul class="navbar-nav align-items-center gap-1">

@@ -122,7 +122,6 @@ Route::middleware(['auth:admin'])->group(function () {
 Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(function () {
 
     //Crud Operation
-
     Route::resources(
         [
             'banner' => BannerController::class, //done
