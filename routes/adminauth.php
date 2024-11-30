@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\MetaController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TeamController;
@@ -128,6 +129,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'banner' => BannerController::class, //done
             'team' => TeamController::class, //done
             'testimonial' => TestimonialController::class, //done
+            'contact' => ContactController::class, //done
 
         ],
 
@@ -143,4 +145,5 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
 
     //Backup
     Route::get('/backup', [AdminController::class, 'downloadBackup'])->name('meta.download');
+
 });

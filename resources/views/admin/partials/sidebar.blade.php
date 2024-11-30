@@ -43,6 +43,11 @@
                 </li>
                 {{-- @endif --}}
 
+                {{-- @if (Auth::guard('admin')->user()->can('all.role')) --}}
+                <li> <a href="{{ route('admin.contact.index') }}"><i class='bx bx-radio-circle'></i>Contact</a>
+                </li>
+                {{-- @endif --}}
+
             </ul>
         </li>
         {{-- @endif --}}

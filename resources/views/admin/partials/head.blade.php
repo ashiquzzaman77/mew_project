@@ -9,7 +9,7 @@
     <meta name="author" content="{{ optional($meta)->name ?? '' }}"> --}}
 
 
-    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!--favicon-->
     <link rel="icon" href="{{ asset('admin/assets/images/favicon-32x32.png') }}" type="image/png" />
