@@ -34,6 +34,11 @@
                 {{-- @endif --}}
 
                 {{-- @if (Auth::guard('admin')->user()->can('all.role')) --}}
+                <li> <a href="{{ route('admin.project.index') }}"><i class='bx bx-radio-circle'></i>Project</a>
+                </li>
+                {{-- @endif --}}
+
+                {{-- @if (Auth::guard('admin')->user()->can('all.role')) --}}
                 <li> <a href="{{ route('admin.team.index') }}"><i class='bx bx-radio-circle'></i>Team</a>
                 </li>
                 {{-- @endif --}}

@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\MetaController;
+use App\Http\Controllers\Admin\MultiImageController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\TestimonialController;
@@ -130,6 +132,8 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'team' => TeamController::class, //done
             'testimonial' => TestimonialController::class, //done
             'contact' => ContactController::class, //done
+            'project' => ProjectController::class, //done
+            'multiImage' => MultiImageController::class, //done
 
         ],
 
