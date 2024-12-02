@@ -59,7 +59,7 @@
                                                 style="width: 50px;height: 50px;" alt="">
                                         @endif
                                     </td>
-                                    <td>{{ $item->project_id }}</td>
+                                    <td>{{ optional($item->project)->name }}</td>
                                     <td>
                                         @if ($item->status == 'active')
                                             <span class="badge bg-success">Active</span>

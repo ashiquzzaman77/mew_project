@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('multi_images', function (Blueprint $table) {
             $table->id();
 
+            // $table->unsignedBigInteger('project_id')->nullable();
+            // $table->foreign('project_id')->references('id')->on('projects')->onDelete('set null');
+
             $table->unsignedBigInteger('project_id')->nullable();
-            $table->foreign('project_id')->references('id')->on('projects')->onDelete('set null');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
 
             $table->longText('multi_image')->nullable();
             $table->string('status')->nullable();

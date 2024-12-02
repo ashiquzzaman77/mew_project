@@ -128,12 +128,12 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     //Crud Operation
     Route::resources(
         [
-            'banner' => BannerController::class, //done
-            'team' => TeamController::class, //done
-            'testimonial' => TestimonialController::class, //done
-            'contact' => ContactController::class, //done
-            'project' => ProjectController::class, //done
-            'multiImage' => MultiImageController::class, //done
+            'banner' => BannerController::class,
+            'team'   => TeamController::class,
+            'testimonial' => TestimonialController::class,
+            'contact' => ContactController::class,
+            'project' => ProjectController::class,
+            'multiImage' => MultiImageController::class,
 
         ],
 
@@ -149,5 +149,4 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
 
     //Backup
     Route::get('/backup', [AdminController::class, 'downloadBackup'])->name('meta.download');
-
 });

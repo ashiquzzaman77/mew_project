@@ -10,4 +10,10 @@ class MultiImage extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    //Project Section
+    public function project()
+    {
+        return $this->belongsTo(Project::class, 'project_id');
+    }
 }

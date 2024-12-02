@@ -17,6 +17,10 @@
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
+
+                    <a href="{{ route('admin.multiImage.create') }}" class="btn btn-danger rounded-0 px-3 me-2">Multi Image
+                    </a>
+
                     <a href="{{ route('admin.project.create') }}" class="btn btn-dark rounded-0 px-3">Create Project
                     </a>
                 </div>
