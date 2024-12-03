@@ -35,7 +35,7 @@ class MultiImageController extends Controller
     {
         // Validate the incoming request data
         $request->validate([
-            'multi_image' => 'required|array',
+            'multi_image' => 'nullable|array',
             'multi_image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'project_id' => 'required|exists:projects,id|unique:multi_images,project_id',
         ], [
@@ -93,6 +93,11 @@ class MultiImageController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'multi_image' => 'nullable|array',
+            'multi_image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
         // Find the existing multi image item
         $item = MultiImage::findOrFail($id);
 

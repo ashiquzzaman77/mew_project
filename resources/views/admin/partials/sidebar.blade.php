@@ -39,6 +39,11 @@
                 {{-- @endif --}}
 
                 {{-- @if (Auth::guard('admin')->user()->can('all.role')) --}}
+                <li> <a href="{{ route('admin.multiImage.index') }}"><i class='bx bx-radio-circle'></i>Multi Image</a>
+                </li>
+                {{-- @endif --}}
+
+                {{-- @if (Auth::guard('admin')->user()->can('all.role')) --}}
                 <li> <a href="{{ route('admin.team.index') }}"><i class='bx bx-radio-circle'></i>Team</a>
                 </li>
                 {{-- @endif --}}

@@ -63,7 +63,10 @@ class ContactController extends Controller
      */
     public function destroy(string $id)
     {
-        //
-    }
+        $item = Contact::findOrFail($id);
 
+        $item->delete();
+
+        return redirect()->route('admin.contact.index')->with('success', 'Data Delete Successfully!!');
+    }
 }
