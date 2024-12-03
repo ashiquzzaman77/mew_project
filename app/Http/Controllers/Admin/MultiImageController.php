@@ -35,9 +35,15 @@ class MultiImageController extends Controller
     {
         // Validate the incoming request data
         $request->validate([
-            'multi_image' => 'required|array', // Ensure 'multi_image' is an array
-            'multi_image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validate each image
+            'multi_image' => 'required|array',
+            'multi_image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'project_id' => 'required|exists:projects,id|unique:multi_images,project_id',
+        ], [
+            'project_id.required' => 'Please select a project.',
+            'project_id.exists' => 'The selected project does not exist.',
+            'project_id.unique' => 'This project has already been used & update section here & update it.',
         ]);
+
 
         $uploadedFiles = [];
 
@@ -69,10 +75,7 @@ class MultiImageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -172,5 +175,4 @@ class MultiImageController extends Controller
         // Redirect back with success message
         return redirect()->route('admin.multiImage.index')->with('success', 'Images and data deleted successfully!');
     }
-
 }

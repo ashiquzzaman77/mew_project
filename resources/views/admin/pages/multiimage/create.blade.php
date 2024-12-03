@@ -44,14 +44,20 @@
                         </div>
 
                         <div class="col-6 col-lg-4 mb-3">
-                            <label for="" class="mb-2">Project Name</label>
-                            <select name="project_id" required class="form-select">
+                            <label for="project_id" class="mb-2">Project Name</label>
+                            <select name="project_id" required class="form-select @error('project_id') is-invalid @enderror">
                                 <option selected value="" disabled>Choose Project...</option>
                                 @foreach ($projects as $project)
-                                    <option value="{{ $project->id }}">{{ $project->name }}</option>
+                                    <option value="{{ $project->id }}" {{ old('project_id') == $project->id ? 'selected' : '' }}>
+                                        {{ $project->name }}
+                                    </option>
                                 @endforeach
                             </select>
+                            @error('project_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
+                        
 
 
                         <div class="col-6 col-lg-6 mb-3"></div>
@@ -70,6 +76,7 @@
                         </div>
 
                     </div>
+                    
                 </form>
 
             </div>

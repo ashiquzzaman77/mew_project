@@ -18,7 +18,8 @@
             <div class="ms-auto">
                 <div class="btn-group">
 
-                    <a href="{{ route('admin.multiImage.create') }}" class="btn btn-danger rounded-0 px-3 me-2">Multi Image
+                    <a href="{{ route('admin.multiImage.create') }}" class="btn btn-danger rounded-0 px-3 me-2">Multi
+                        Image
                     </a>
 
                     <a href="{{ route('admin.project.create') }}" class="btn btn-dark rounded-0 px-3">Create Project
@@ -53,7 +54,9 @@
                                         <img src="{{ !empty($item->image) ? url('storage/' . $item->image) : 'https://ui-avatars.com/api/?name=' . urlencode($item->name) }}"
                                             style="width: 50px;height: 50px;" alt="">
                                     </td>
+
                                     <td>{{ $item->name }}</td>
+
                                     <td>
                                         @if ($item->status == 'active')
                                             <span class="badge bg-success">Active</span>
@@ -91,5 +94,40 @@
 
     </div>
 
+    <script>
+        // Get the file input and preview container
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+
+        imageInput.addEventListener('change', function(event) {
+            // Clear any previous previews
+            imagePreview.innerHTML = '';
+
+            const files = event.target.files;
+
+            // Loop through the selected files
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+
+                // Check if the file is an image
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        const imgElement = document.createElement('img');
+                        imgElement.src = e.target.result;
+                        imgElement.classList.add('img-thumbnail');
+                        imgElement.style.maxWidth = '100px'; // Optional: limit image size
+
+                        // Append the image preview to the preview container
+                        imagePreview.appendChild(imgElement);
+                    };
+
+                    // Read the file as a data URL
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+    </script>
 
 </x-admin-app-layout>

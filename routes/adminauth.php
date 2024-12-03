@@ -125,6 +125,7 @@ Route::middleware(['auth:admin'])->group(function () {
 
     //Send Team Mail
     Route::post('/admin/team/sendEmail', [TeamController::class, 'sendEmail'])->name('admin.team.sendEmail');
+    // Route::post('/multi-image/{id}', [ProjectController::class, 'multiImage']);
 });
 
 
