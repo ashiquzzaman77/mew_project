@@ -120,6 +120,11 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/admin-inactive/{id}', 'InactiveAdmin')->name('admin.inactive');
         Route::get('/admin-active/{id}', 'ActiveAdmin')->name('admin.active');
     });
+
+    //Deffernet Work
+
+    //Send Team Mail
+    Route::post('/admin/team/sendEmail', [TeamController::class, 'sendEmail'])->name('admin.team.sendEmail');
 });
 
 
@@ -129,11 +134,12 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
     Route::resources(
         [
             'banner' => BannerController::class,
+            'project' => ProjectController::class,
+            'multiImage' => MultiImageController::class,
+
             'team'   => TeamController::class,
             'testimonial' => TestimonialController::class,
             'contact' => ContactController::class,
-            'project' => ProjectController::class,
-            'multiImage' => MultiImageController::class,
 
         ],
 

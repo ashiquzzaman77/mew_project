@@ -1,6 +1,5 @@
 <x-admin-app-layout :title="'Team'">
 
-
     <div class="page-content">
 
         <!--breadcrumb-->
@@ -68,6 +67,71 @@
 
                                     <td>
 
+                                        <a href="" data-bs-toggle="modal"
+                                            data-bs-target="#showModal{{ $item->id }}">
+                                            <i class="fa-solid fa-message text-dark"></i>
+                                        </a>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="showModal{{ $item->id }}" tabindex="-1"
+                                            aria-labelledby="exampleshowModal" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleshowModal">Message Form
+                                                            - Team Member</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+
+                                                    <form action="{{ route('admin.team.sendEmail') }}" method="POST"
+                                                        enctype="multipart/form-data">
+
+                                                        @csrf
+
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-12 mb-3">
+                                                                    <label for="name">Name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="name" readonly
+                                                                        value="{{ $item->name }}" id="name">
+                                                                </div>
+
+                                                                <div class="col-12 mb-3">
+                                                                    <label for="email">Email</label>
+                                                                    <input type="email" class="form-control"
+                                                                        name="to" readonly
+                                                                        value="{{ $item->email }}" id="email">
+                                                                </div>
+
+                                                                <div class="col-12 mb-3">
+                                                                    <label for="subject">Subject</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="subject" id="subject">
+                                                                </div>
+
+                                                                <div class="col-12 mb-3">
+                                                                    <label for="message">Message</label>
+                                                                    <textarea name="message" id="message" cols="10" rows="7" class="form-control"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-outline-primary rounded-0">Send Message<button>
+                                                        </div>
+
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal -->
+
+
+
                                         <a href="{{ route('admin.team.edit', $item->id) }}"><i
                                                 class="fa-solid fa-pen-to-square fs-6 text-primary"></i></a>
 
@@ -94,6 +158,8 @@
         </div>
 
     </div>
+
+    <!-- Modal -->
 
 
 </x-admin-app-layout>

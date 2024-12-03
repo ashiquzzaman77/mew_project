@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Team;
 use Illuminate\Http\Request;
+use App\Mail\TeamMemberMessage;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class TeamController extends Controller
@@ -177,4 +179,21 @@ class TeamController extends Controller
 
         return redirect()->route('admin.team.index')->with('success', 'Data Delete Successfully!!');
     }
+
+    public function sendEmail(Request $request)
+    {
+        $request->validate([
+            'to' => 'required|email',
+            'name' => 'required|string|max:255',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        // Send the email to the team member
+        Mail::to($request->to)->send(new TeamMemberMessage($request->name, $request->subject, $request->message));
+
+        return back()->with('success', 'Message sent successfully!');
+    }
+
+    
 }
