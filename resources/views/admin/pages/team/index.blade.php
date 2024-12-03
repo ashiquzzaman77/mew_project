@@ -120,7 +120,9 @@
                                                         </div>
 
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-outline-primary rounded-0">Send Message<button>
+                                                            <button type="submit"
+                                                                class="btn btn-outline-primary rounded-0">Send
+                                                                Message<button>
                                                         </div>
 
                                                     </form>
