@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="" class="logo-icon" alt="logo icon">
+            <img src="" class="logo-icon" alt="">
         </div>
         <div>
             <h4 class="logo-text">Template</h4>
