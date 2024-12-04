@@ -44,7 +44,6 @@ class MultiImageController extends Controller
             'project_id.unique' => 'This project has already been used & update section here & update it.',
         ]);
 
-
         $uploadedFiles = [];
 
         // Handle the uploaded files
@@ -75,7 +74,8 @@ class MultiImageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id) {}
+    public function show(string $id)
+    {}
 
     /**
      * Show the form for editing the specified resource.
@@ -95,7 +95,7 @@ class MultiImageController extends Controller
     {
         $request->validate([
             'multi_image' => 'nullable|array',
-            'multi_image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'multi_image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // Find the existing multi image item
