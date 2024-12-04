@@ -13,7 +13,13 @@
 <script src="{{ asset('admin/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 <script src="{{ asset('admin/assets/plugins/chartjs/js/chart.js') }}"></script>
 
+{{-- <script src="../../../../cdn.jsdelivr.net/npm/select2%404.1.0-rc.0/dist/js/select2.min.js"></script> --}}
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script src="{{asset('admin/assets/plugins/select2/js/select2-custom.js')}}"></script>
+
 <script src="{{ asset('admin/assets/js/index.js') }}"></script>
+
 
 
 
@@ -37,6 +43,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -82,9 +89,13 @@
     });
 </script>
 
+
+
 <!--app JS-->
 <script src="{{ asset('admin/assets/js/app.js') }}"></script>
 
 <script>
     new PerfectScrollbar(".app-container")
 </script>
+
+

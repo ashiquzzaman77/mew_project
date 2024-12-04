@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\AdminController;
@@ -137,6 +138,8 @@ Route::middleware(['auth:admin'])->prefix('admin')->name('admin.')->group(functi
             'banner' => BannerController::class,
             'project' => ProjectController::class,
             'multiImage' => MultiImageController::class,
+
+            'about' => AboutController::class,
 
             'team'   => TeamController::class,
             'testimonial' => TestimonialController::class,

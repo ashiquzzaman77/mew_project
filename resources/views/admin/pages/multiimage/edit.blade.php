@@ -50,8 +50,9 @@
                         <!-- Project Name Field -->
                         <div class="col-6 col-lg-4 mb-3">
                             <label for="project_id" class="mb-2">Project Name</label>
-                            <select name="project_id" required class="form-select">
-                                <option selected value="" disabled>Choose Project...</option>
+                            <select name="project_id" id="single-select-field" data-placeholder="Choose Project..."
+                                required class="form-select">
+                                <option></option>
                                 @foreach ($projects as $project)
                                     <option value="{{ $project->id }}"
                                         {{ $item->project_id == $project->id ? '' : 'disabled' }}
